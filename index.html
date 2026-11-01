@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosistema Vacaciones Brasil 2026/2027</title>
+    <!-- Google Fonts para un look moderno y cinematográfico -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(18, 24, 38, 0.75);
+            --primary-glow: #00f2fe;
+            --secondary-glow: #4facfe;
+            --accent-brasil: #00ff87;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --danger-glow: #ff4b4b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo cinematográfico con destellos animados */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -20%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 255, 135, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        /* Contenedor Principal */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-main {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 35px rgba(79, 172, 254, 0.4);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.7);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary-glow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Sección de Aplicaciones / Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 10px;
+            margin-bottom: 40px;
+        }
+
+        /* Tarjeta de Aplicación Estética Inmersiva */
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.12), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2);
+        }
+
+        .app-card:hover::before {
+            opacity: 1;
+        }
+
+        .app-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 16px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .app-card:hover .app-logo {
+            transform: scale(1.08);
+        }
+
+        .app-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .app-action {
+            font-size: 0.85rem;
+            color: var(--primary-glow);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .app-action::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .app-card:hover .app-action::after {
+            transform: translateX(4px);
+        }
+
+        /* Botón Salir */
+        .exit-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .btn-exit {
+            background: rgba(255, 75, 75, 0.1);
+            border: 1px solid rgba(255, 75, 75, 0.3);
+            color: #ff8080;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-exit:hover {
+            background: rgba(255, 75, 75, 0.25);
+            border-color: var(--danger-glow);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 75, 75, 0.4);
+        }
+
+        /* Footer sutil */
+        footer {
+            margin-top: auto;
+            padding: 20px 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Encabezado con Logotipo e Información -->
+        <header>
+            <img src="logotipo_brasil.jpg" alt="Logotipo Brasil 2026/2027" class="logo-main" onerror="this.src='https://via.placeholder.com/130/121826/00f2fe?text=Brasil'">
+            <h1>ECOSISTEMA VACACIONES BRASIL 2026/2027</h1>
+            <p class="subtitle">Aplicaciones de manejo organizativo contable</p>
+        </header>
+
+        <!-- Sección de Enlaces / Aplicaciones con sus respectivas etiquetas inmersivas -->
+        <main class="apps-grid">
+            <!-- 1. CUSTO RECETA -->
+            <a href="https://materiagenerica-ops.github.io/CUSTO-RECEITA/index.html?" class="app-card" target="_blank" rel="noopener noreferrer">
+                <img src="logotipoc.jpg" alt="Custo Receta Logo" class="app-logo" onerror="this.src='https://via.placeholder.com/90/121826/4facfe?text=CR'">
+                <h2 class="app-title">CUSTO RECETA</h2>
+                <span class="app-action">Acceder</span>
+            </a>
+
+            <!-- 2. RECAUDACIONES -->
+            <a href="https://drrubenmpereyra-stack.github.io/VACACIONES-BRASIL-2027/" class="app-card" target="_blank" rel="noopener noreferrer">
+                <img src="logotipo_brasil2.jpg" alt="Recaudaciones Logo" class="app-logo" onerror="this.src='https://via.placeholder.com/90/121826/00ff87?text=RB'">
+                <h2 class="app-title">RECAUDACIONES</h2>
+                <span class="app-action">Acceder</span>
+            </a>
+
+            <!-- 3. BITACORA GENERAL DE GASTOS -->
+            <a href="https://materiagenerica-ops.github.io/BITACORA-COSTOS-VACACIONES-BRASIL-2027/?" class="app-card" target="_blank" rel="noopener noreferrer">
+                <img src="logotipo_bitacora.jpg" alt="Bitácora General Logo" class="app-logo" onerror="this.src='https://via.placeholder.com/90/121826/f1c40f?text=BG'">
+                <h2 class="app-title">BITACORA GENERAL DE GASTOS</h2>
+                <span class="app-action">Acceder</span>
+            </a>
+
+            <!-- 4. CONTROL DINÁMICO DE GASTOS -->
+            <a href="https://drrubenmpereyra-stack.github.io/Contabilidad-Vcaciones-2028/?" class="app-card" target="_blank" rel="noopener noreferrer">
+                <img src="gastospaso_paso.jpg" alt="Control Dinámico Logo" class="app-logo" onerror="this.src='https://via.placeholder.com/90/121826/e74c3c?text=CD'">
+                <h2 class="app-title">CONTROL DINÁMICO DE GASTOS</h2>
+                <span class="app-action">Acceder</span>
+            </a>
+        </main>
+
+        <!-- Botón Salir -->
+        <div class="exit-container">
+            <button class="btn-exit" onclick="window.close(); window.location.href='about:blank';">Salir de la Plataforma</button>
+        </div>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>Plataforma de Control Financiero y Logístico</p>
+        </footer>
+    </div>
+
+</body>
+</html>
